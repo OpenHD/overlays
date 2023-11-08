@@ -101,8 +101,6 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-io-dual-cameras-gc2053-gc2093.dtbo \
 	radxa-cm3-io-dual-cameras-gc2053.dtbo \
 	radxa-cm3-io-i2c0-hym8563.dtbo \
-	radxa-cm3-io-okdo-5mp-camera-cam1.dtbo \
-	radxa-cm3-io-okdo-5mp-camera-cam2.dtbo \
 	radxa-cm3-io-pcie2x1.dtbo \
 	radxa-cm3-raspcm4io-pcie2x1.dtbo \
 	radxa-cm3-rpi-cm4-7inch-touchscreen-disp0.dtbo \
@@ -110,10 +108,6 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-camera-v2-imx219-cam0.dtbo \
 	radxa-cm3-rpi-cm4-camera-v2-imx219-cam1.dtbo \
 	radxa-cm3-rpi-cm4-io-disable-emc2301.dtbo \
-	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
-	radxa-cm3s-io-csi0-rpi-camera-v2.dtbo \
-	radxa-cm3s-io-csi1-okdo-5mp-camera.dtbo \
-	radxa-cm3s-io-csi1-rpi-camera-v2.dtbo \
 	rk3568-can0-m0.dtbo \
 	rk3568-can1-m0.dtbo \
 	rk3568-can1-m1.dtbo \
@@ -222,16 +216,6 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-cm3-sodimm-io-radxa-display-8hd.dtbo \
 	radxa-cm3-sodimm-io-radxa-display-10hd.dtbo \
 	radxa-cm3-sodimm-io-raspberrypi-7inch-touchscreen.dtbo \
-	radxa-cm3i-io-edp-sharp-lq133t1jw01-lcd.dtbo \
-	radxa-cm3i-io-okdo-5mp-camera-cam1.dtbo \
-	radxa-cm3i-io-okdo-5mp-camera-cam2.dtbo \
-	radxa-cm3i-io-quectel-4g-module.dtbo \
-	radxa-cm3i-io-radxa-8inch-display.dtbo \
-	radxa-cm3i-io-radxa-display-10hd.dtbo \
-	radxa-cm3i-io-radxa-display-10fhd.dtbo \
-	radxa-cm3i-io-rpi-camera-v2-cam1.dtbo \
-	radxa-cm3i-io-rpi-camera-v2-cam2.dtbo \
-	radxa-cm3i-io-sata.dtbo \
 	radxa-zero3-external-antenna.dtbo \
 	radxa-zero3-rpi-camera-v1.3.dtbo \
 	radxa-zero3-rpi-camera-v2.dtbo \
