@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	metadata {
+		title = "Enable UART1";
+		compatible = "radxa,rockpis", "radxa,s0";
+		category = "misc";
+		exclusive = "GPIO1_D0", "GPIO1_D1";
+		description = "Enable UART1.";
+	};
+
+	fragment@0 {
+		target = <&uart1>;
+
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&uart1_xfer>;
+		};
+	};
+};

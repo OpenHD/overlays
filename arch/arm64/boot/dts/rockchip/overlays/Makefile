@@ -18,6 +18,27 @@ endif
 dtb-$(CONFIG_CLK_RK3308) += \
 	rk3308-bs-opp-1008.dtbo \
 	rk3308-bs-opp-1296.dtbo \
+	rk3308-i2c0.dtbo \
+	rk3308-i2c1.dtbo \
+	rk3308-i2c2.dtbo \
+	rk3308-i2c3-m0.dtbo \
+	rk3308-i2c3-m1.dtbo \
+	rk3308-pwm2.dtbo \
+	rk3308-pwm3.dtbo \
+	rk3308-pwm4.dtbo \
+	rk3308-pwm5.dtbo \
+	rk3308-pwm6.dtbo \
+	rk3308-pwm7.dtbo \
+	rk3308-pwm8.dtbo \
+	rk3308-pwm9.dtbo \
+	rk3308-pwm10.dtbo \
+	rk3308-pwm11.dtbo \
+	rk3308-spi0-spidev.dtbo \
+	rk3308-spi1-spidev.dtbo \
+	rk3308-spi2-spidev.dtbo \
+	rk3308-uart0.dtbo \
+	rk3308-uart1.dtbo \
+	rk3308-uart2.dtbo \
 	rk3308-uart3.dtbo
 
 dtb-$(CONFIG_CLK_RK3328) += \
@@ -188,10 +209,12 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-cm3-io-sata2.dtbo \
 	radxa-cm3-io-radxa-10p1inch-display.dtbo \
 	radxa-cm3-io-sharp-lq133t1jw01-without-hdmi.dtbo \
-	radxa-cm3-io-hd101boe9365-display.dtbo \
 	radxa-cm3-io-radxa-display-8hd.dtbo \
+	radxa-cm3-io-radxa-display-10fhd.dtbo \
+	radxa-cm3-io-jymx1013833281be-display.dtbo \
 	radxa-5inch-touchscreen-on-cm3-sodimm-io.dtbo \
 	radxa-cm3-sodimm-io-radxa-display-8hd.dtbo \
+	radxa-cm3-sodimm-io-radxa-display-10hd.dtbo \
 	radxa-cm3-sodimm-io-raspberrypi-7inch-touchscreen.dtbo \
 	radxa-zero3-external-antenna.dtbo \
 	radxa-zero3-rpi-camera-v1.3.dtbo \
@@ -202,6 +225,7 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	rock-3a-radxa-display-10hd.dtbo \
 	rock-3b-radxa-8inch-display.dtbo \
 	rock-3b-radxa-10p1inch-display.dtbo \
+	rock-3b-radxa-display-10fhd.dtbo \
 	rock-3c-radxa-display-8hd.dtbo \
 	rock-3c-radxa-display-10hd.dtbo
 
@@ -299,7 +323,6 @@ dtb-$(CONFIG_CLK_RK3588) += \
 	rk3588-w1-gpio4-b1.dtbo \
 	rock-5a-allnet-5inch-display.dtbo \
 	rock-5a-radxa-25w-poe.dtbo \
-	rock-5a-radxa-display-10fhd.dtbo \
 	rock-5a-radxa-display-8hd.dtbo \
 	rock-5a-rpi-camera-v2.dtbo \
 	rock-5a-radxa-display-10hd.dtbo \
@@ -318,6 +341,7 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	radxa-cm5-io-okdo-5mp.dtbo \
 	radxa-cm5-io-radxa-display-8hd.dtbo \
 	radxa-cm5-io-radxa-camera-4k.dtbo \
+	radxa-cm5-io-radxa-display-10fhd.dtbo \
 	radxa-cm5-io-radxa-display-10hd.dtbo \
 	radxa-cm5-io-radxa-display-8hd.dtbo \
 	radxa-cm5-io-raspi-7inch-touchscreen.dtbo \
@@ -327,12 +351,15 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp0.dtbo \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp1.dtbo \
 	rock-5a-radxa-camera-4k.dtbo \
+	rock-5a-radxa-display-10fhd.dtbo \
 	rock-5a-raspi-7inch-touchscreen.dtbo \
 	rock-5b-radxa-camera-4k.dtbo \
 	rock-5b-radxa-display-10fhd.dtbo \
 	rock-5b-raspi-7inch-touchscreen.dtbo \
 	rock-5b-hdmi1-8k.dtbo \
-	rock-5b-hdmi2-8k.dtbo
+	rock-5b-hdmi2-8k.dtbo \
+	rock-5b-plus-cam0-radxa-camera-4k.dtbo \
+	rock-5b-plus-cam1-radxa-camera-4k.dtbo
 
 dtbotxt-$(CONFIG_ARCH_ROCKCHIP) += \
 	README.overlays
