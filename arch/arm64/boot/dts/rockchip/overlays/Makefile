@@ -219,6 +219,7 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-zero3-external-antenna.dtbo \
 	radxa-zero3-rpi-camera-v1.3.dtbo \
 	radxa-zero3-rpi-camera-v2.dtbo \
+	radxa-zero3-imx708.dtbo \
 	radxa-zero3-disabled-ethernet.dtbo \
 	radxa-zero3-disabled-wireless.dtbo \
 	rock-3a-radxa-display-8hd.dtbo \
