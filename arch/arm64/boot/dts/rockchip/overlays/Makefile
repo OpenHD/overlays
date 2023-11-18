@@ -108,6 +108,8 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-camera-v2-imx219-cam0.dtbo \
 	radxa-cm3-rpi-cm4-camera-v2-imx219-cam1.dtbo \
 	radxa-cm3-rpi-cm4-io-disable-emc2301.dtbo \
+	radxa-cm3-rpi-cm4-arducam-imx708-cam0.dtbo \
+	radxa-cm3-rpi-cm4-arducam-imx708-cam1.dtbo \
 	rk3568-can0-m0.dtbo \
 	rk3568-can1-m0.dtbo \
 	rk3568-can1-m1.dtbo \
