@@ -44,7 +44,7 @@
 				reg = <0x1a>;
 
 				clocks = <&ext_cam_clk_imx708_0>;
-				clock-names = "xvclk";
+				clock-names = "xclk";
 
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "front";
