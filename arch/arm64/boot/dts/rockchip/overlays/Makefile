@@ -96,8 +96,6 @@ dtb-$(CONFIG_CPU_RK3399) += \
 
 dtb-$(CONFIG_CLK_RK3568) += \
 	audioinjector-isolated-soundcard.dtbo \
-	radxa-cm3-io-camera-v2-imx219-cam1.dtbo \
-	radxa-cm3-io-camera-v2-imx219-cam2.dtbo \
 	radxa-cm3-io-dual-cameras-gc2053-gc2093.dtbo \
 	radxa-cm3-io-dual-cameras-gc2053.dtbo \
 	radxa-cm3-io-i2c0-hym8563.dtbo \
@@ -214,6 +212,8 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-cm3-io-radxa-display-8hd.dtbo \
 	radxa-cm3-io-radxa-display-10fhd.dtbo \
 	radxa-cm3-io-jymx1013833281be-display.dtbo \
+	radxa-cm3-io-camera-v2-imx219-cam1.dtbo \
+	radxa-cm3-io-camera-v2-imx219-cam2.dtbo \
 	radxa-5inch-touchscreen-on-cm3-sodimm-io.dtbo \
 	radxa-cm3-sodimm-io-radxa-display-8hd.dtbo \
 	radxa-cm3-sodimm-io-radxa-display-10hd.dtbo \
