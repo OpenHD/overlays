@@ -24,18 +24,6 @@
 				clock-output-names = "ext_cam_clk_imx708_0";
 				#clock-cells = <0>;
 			};
-
-			camera_pwdn_gpio: camera-pwdn-gpio {
-				status = "okay";
-				compatible = "regulator-fixed";
-				regulator-name = "camera_pwdn_gpio";
-				regulator-always-on;
-				regulator-boot-on;
-				enable-active-high;
-				pwdn-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-				pinctrl-names = "default";
-				pinctrl-0 = <&cam_pwdn_gpio>;
-			};
 		};
 	};
 
@@ -64,6 +52,7 @@
 				rockchip,camera-module-facing = "front";
 				rockchip,camera-module-name = "arducam-imx708";
 				rockchip,camera-module-lens-name = "default";
+				reset-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
 
 				port {
 					imx708_1_out: endpoint {
@@ -169,17 +158,5 @@
 			status = "okay";
 		};
 	};
-
-
-	fragment@9 {
-		target = <&pinctrl>;
-
-		__overlay__ {
-			camera {
-				cam_pwdn_gpio: cam-pwdn-gpio {
-					rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
-				};
-			};
-		};
-	};
+	
 };
