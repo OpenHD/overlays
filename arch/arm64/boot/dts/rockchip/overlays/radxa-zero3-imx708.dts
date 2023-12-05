@@ -7,7 +7,7 @@
 
 / {
 	metadata {
-		title = "Enable Arducam IMX708 for OpenHD on Zero3W";
+		title = "Enable Arducam IMX708 on Zero3W";
 		compatible = "radxa,zero3";
 		category = "camera";
 		exclusive = "csi2_dphy0";
@@ -60,6 +60,7 @@
 
 				clocks = <&clk_cam_24m>;
 				clock-names = "xclk";
+				power-domains = <&power RK3568_PD_VI>;
 				reset-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
