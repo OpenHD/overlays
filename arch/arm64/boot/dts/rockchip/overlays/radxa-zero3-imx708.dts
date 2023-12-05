@@ -60,7 +60,6 @@
 
 				clocks = <&clk_cam_24m>;
 				clock-names = "xclk";
-				power-domains = <&power RK3568_PD_VI>;
 				reset-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
