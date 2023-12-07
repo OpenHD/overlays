@@ -1,0 +1,21 @@
+/dts-v1/;
+/plugin/;
+/ {
+	compatible = "radxa,zero3";
+
+	fragment@0 {
+		target-path = "/soc";
+		__overlay__ {
+			keypad: keypad {
+				compatible = "gpio-keys";
+				#address-cells = <1>;
+				#size-cells = <0>;
+				button@13 {
+					label = "A-Key";
+					linux,code = <30>;
+					gpios = <&gpio3 0 5>;
+				};
+			};
+		};
+	};	
+};
