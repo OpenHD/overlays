@@ -1,18 +1,54 @@
 /dts-v1/;
 /plugin/;
+
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/gpio/gpio.h>
+
 / {
 	compatible = "radxa,zero3";
 
 	fragment@0 {
-		target-path = "/soc";
+		target-path = "/";
 		__overlay__ {
-			keypad: keypad {
+			gpio-keys {
 				compatible = "gpio-keys";
 				#address-cells = <1>;
 				#size-cells = <0>;
-				button@13 {
-					label = "A-Key";
-					linux,code = <30>;
+				autorepeat;
+				
+				button@1 {
+					label = "Up-Key";
+					linux,code = <103>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@2 {
+					label = "Down-Key";
+					linux,code = <108>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@3 {
+					label = "Left-Key";
+					linux,code = <105>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@4 {
+					label = "Right-Key";
+					linux,code = <106>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@5 {
+					label = "Enter-Key";
+					linux,code = <28>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@6 {
+					label = "Back-Key";
+					linux,code = <14>;
+					gpios = <&gpio3 0 5>;
+				};
+				button@7 {
+					label = "Menu-Key";
+					linux,code = <50>;
 					gpios = <&gpio3 0 5>;
 				};
 			};
