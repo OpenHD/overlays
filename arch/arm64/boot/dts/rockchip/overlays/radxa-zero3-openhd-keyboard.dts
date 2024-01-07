@@ -1,14 +1,14 @@
 /dts-v1/;
 /plugin/;
 
-#include <dt-bindings/input/input.h>
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/rockchip.h>
 
 / {
 	compatible = "radxa,zero3";
 
 	fragment@0 {
-		target-path = "/";
+		target-path = "&gpio3";
 		__overlay__ {
 			gpio-keys {
 				compatible = "gpio-keys";
@@ -24,32 +24,32 @@
 				button@2 {
 					label = "Down-Key";
 					linux,code = <108>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 6>;
 				};
 				button@3 {
 					label = "Left-Key";
 					linux,code = <105>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 7>;
 				};
 				button@4 {
 					label = "Right-Key";
 					linux,code = <106>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 8>;
 				};
 				button@5 {
 					label = "Enter-Key";
 					linux,code = <28>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 9>;
 				};
 				button@6 {
 					label = "Back-Key";
 					linux,code = <14>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 10>;
 				};
 				button@7 {
 					label = "Menu-Key";
 					linux,code = <50>;
-					gpios = <&gpio3 0 5>;
+					gpios = <&gpio3 0 11>;
 				};
 			};
 		};
