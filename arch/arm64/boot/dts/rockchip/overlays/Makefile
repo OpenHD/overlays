@@ -223,7 +223,6 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-zero3-rpi-camera-v2.dtbo \
 	radxa-zero3-imx708.dtbo \
 	radxa-zero3-cam-veyecam2m.dtbo \
-	radxa-zero3-cam-veyemvcam.dtbo \
 	radxa-zero3-openhd-keyboard.dtbo \
 	radxa-zero3-disabled-ethernet.dtbo \
 	radxa-zero3-disabled-wireless.dtbo \
