@@ -15,7 +15,7 @@
 	};
  
 	 fragment@0 {
-		 target = <&csi2_dphy0>;
+		 target = <&csi2_dphy_hw>;
 		 __overlay__ {
 			 status = "okay";
  
@@ -27,8 +27,8 @@
 					 #address-cells = <1>;
 					 #size-cells = <0>;
  
-					 mipi_in_ucam3: endpoint@4 {
-						 reg = <4>;
+					 mipi_in_ucam0: endpoint@1 {
+						 reg = <1>;
 						 remote-endpoint = <&veyecam2m_out>;
 						 data-lanes = <1 2>;
 					 };
@@ -38,8 +38,8 @@
 					 #address-cells = <1>;
 					 #size-cells = <0>;
  
-					 csidphy_out: endpoint@0 {
-						 reg = <0>;
+					 csidphy_out: endpoint@1 {
+						 reg = <1>;
 						 remote-endpoint = <&isp0_in>;
 					 };
 				 };
@@ -72,7 +72,7 @@
  
 				 isp0_in: endpoint@0 {
 					 reg = <0>;
-					 remote-endpoint = <&csidphy_out>;
+					 remote-endpoint = <&dphy0_out>;
 				 };
 			 };
 		 };
@@ -86,7 +86,7 @@
 	 };
  
 	 fragment@5 {
-		 target = <&i2c4>;
+		 target = <&rkisp_mmu>;
 		 __overlay__ {
 			 status = "okay";
 			 clock-frequency = <400000>;
@@ -102,11 +102,10 @@
 				 pinctrl-names = "default";
 				 pinctrl-0 = <&cif_clk>;
  
-				 //power-gpios = <&pca9555 PCA_IO0_4 GPIO_ACTIVE_HIGH>;
-				 reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-				 pwdn-gpios = <&gpio4 RK_PB7 GPIO_ACTIVE_HIGH>;
+				 //power-gpios = &gpio1 RK_PC6 GPIO_ACTIVE_HIGH;
+				 reset-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
+				 pwdn-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_HIGH>;
  
-				 firefly,clkout-enabled-index = <0>;
 				 rockchip,camera-module-index = <0>;
 				 rockchip,camera-module-facing = "back";
 				 rockchip,camera-module-name = "NC";
