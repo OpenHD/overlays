@@ -87,14 +87,14 @@
 	};
  
 	fragment@4 {
-		target = <&rkisp_vir1>;
+		target = <&rkisp>;
 		__overlay__ {
-			status = "disabled";
+			status = "okey";
 		};
 	};
  
 	fragment@5 {
-		target = <&rkisp_mmu>;
+		target = <&i2c2>;
 		__overlay__ {
 			status = "okay";
 			clock-frequency = <400000>;
