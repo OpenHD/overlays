@@ -101,10 +101,11 @@
 				power-domains = <&power RK3568_PD_VI>;
 				pinctrl-names = "default";
 				pinctrl-0 = <&cif_clk>;
- 
+				pwdn-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_LOW>;
+
 				//power-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_HIGH>;
 				//reset-gpios = <&gpio3 RK_PC6 1>;
-				pwdn-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
+				//pwdn-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
  
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
