@@ -19,6 +19,14 @@
 		__overlay__ {
 			status = "okay";
  
+			clk_cam_4m: external-camera-clock-24m {
+				status = "okay";
+				compatible = "fixed-clock";
+				clock-frequency = <400000>;
+				clock-output-names = "clk_cam_4m";
+				#clock-cells = <0>;
+			};
+
 			ports {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -95,7 +103,7 @@
 				status = "okay";
 				compatible = "veye,veyecam2m";
 				reg = <0x3b>;
-				clocks = <&cru CLK_CIF_OUT>;
+				clocks = <&clk_cam_4m>;
 				clock-names = "xvclk";
 				//avdd-supply = <&vcc_mipi>;
 				power-domains = <&power RK3568_PD_VI>;
