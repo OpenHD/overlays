@@ -44,11 +44,13 @@
 
 	fragment@1 {
 		target = <&i2c2>;
+		clock-frequency = <400000>;
+
 
 		__overlay__ {
 			status = "okay";
 			pinctrl-names = "default";
-			pinctrl-0 = <&i2c2m1_xfer>;
+			pinctrl-0 = <&cif_clk>;
 
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -141,7 +143,7 @@
 		target = <&rkisp>;
 
 		__overlay__ {
-			status = "okay";
+			status = "disabled";
 		};
 	};
 
@@ -149,7 +151,7 @@
 		target = <&rkisp_mmu>;
 
 		__overlay__ {
-			status = "okay";
+			status = "disabled";
 		};
 	};
 
@@ -157,7 +159,7 @@
 		target = <&rkcif_mmu>;
 
 		__overlay__ {
-			status = "okay";
+			status = "disabled";
 		};
 	};
 
@@ -165,7 +167,7 @@
 		target = <&rkcif>;
 
 		__overlay__ {
-			status = "okay";
+			status = "disabled";
 		};
 	};
 
