@@ -18,18 +18,7 @@
 	fragment@0 {
 		target-path = "/";
 
-		__overlay__ {
-			camera_pwdn_gpio: camera-pwdn-gpio {
-				compatible = "regulator-fixed";
-				regulator-name = "camera_pwdn_gpio";
-				regulator-always-on;
-				regulator-boot-on;
-				enable-active-high;
-				gpio = <&gpio1 RK_PC6 GPIO_ACTIVE_HIGH>;
-				pinctrl-names = "default";
-				pinctrl-0 = <&cam_pwdn_gpio>;
-			};
-			
+		__overlay__ {		
 			clk_cam_24m: external-camera-clock-24m {
 				status = "okay";
 				compatible = "fixed-clock";
@@ -44,14 +33,12 @@
 
 	fragment@1 {
 		target = <&i2c2>;
-		clock-frequency = <400000>;
 
 
 		__overlay__ {
 			status = "okay";
 			pinctrl-names = "default";
-			pinctrl-0 = <&cif_clk>;
-
+			pinctrl-0 = <&i2c2m1_xfer>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 
@@ -59,18 +46,19 @@
 				status = "okay";
 				compatible = "veye,veyecam2m";
 				reg = <0x3b>;
-
 				clocks = <&clk_cam_24m>;
 				clock-names = "xvclk";
+				pwdn-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_LOW>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
-				rockchip,camera-module-name = "arducam-imx708";
+				rockchip,camera-module-name = "veyecam2m";
 				rockchip,camera-module-lens-name = "default";
 
 				port {
 					veyecam2m_out: endpoint {
 						remote-endpoint = <&mipi_in_ucam0>;
 						data-lanes = <1 2>;
+						link-frequencies = /bits/ 64 <297000000>;
 					};
 				};
 			};
@@ -143,7 +131,7 @@
 		target = <&rkisp>;
 
 		__overlay__ {
-			status = "disabled";
+			status = "okey";
 		};
 	};
 
@@ -151,7 +139,7 @@
 		target = <&rkisp_mmu>;
 
 		__overlay__ {
-			status = "disabled";
+			status = "okay";
 		};
 	};
 
@@ -159,7 +147,7 @@
 		target = <&rkcif_mmu>;
 
 		__overlay__ {
-			status = "disabled";
+			status = "okay";
 		};
 	};
 
@@ -167,21 +155,7 @@
 		target = <&rkcif>;
 
 		__overlay__ {
-			status = "disabled";
-		};
-	};
-
-
-	fragment@9 {
-		target = <&pinctrl>;
-
-		__overlay__ {
 			status = "okay";
-			camera {
-				cam_pwdn_gpio: cam-pwdn-gpio {
-					rockchip,pins = <3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
-				};
-			};
 		};
 	};
 };
