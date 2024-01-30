@@ -16,6 +16,7 @@ ifeq ($(strip $(CONFIG_CPU_RK3588)), y)
 endif
 
 dtb-$(CONFIG_CLK_RK3308) += \
+	radxa-s0-ext-antenna.dtbo \
 	rk3308-bs-opp-1008.dtbo \
 	rk3308-bs-opp-1296.dtbo \
 	rk3308-i2c0.dtbo \
@@ -34,20 +35,24 @@ dtb-$(CONFIG_CLK_RK3308) += \
 	rk3308-pwm10.dtbo \
 	rk3308-pwm11.dtbo \
 	rk3308-spi0-spidev.dtbo \
+	rk3308-spi1-m1-spidev.dtbo \
 	rk3308-spi1-spidev.dtbo \
 	rk3308-spi2-spidev.dtbo \
 	rk3308-uart0.dtbo \
 	rk3308-uart1.dtbo \
-	rk3308-uart2.dtbo \
-	rk3308-uart3.dtbo
+	rk3308-uart2-m0.dtbo \
+	rk3308-uart3.dtbo \
+	rk3308-uart3-m1.dtbo \
+	rock-pi-s-poe-headphone.dtbo
 
 dtb-$(CONFIG_CLK_RK3328) += \
 	rk3328-pwm2.dtbo \
 	rk3328-uart1.dtbo \
-	rk3328-uart2-m0.dtbo \
+	rk3328-uart2-m1.dtbo \
 	rk3328-spi0-spidev.dtbo
 
 dtb-$(CONFIG_CLK_RK3399) += \
+	rk3399-disable-fiq-debugger.dtbo \
 	rk3399-dwc3-0-host.dtbo \
 	rk3399-dwc3-0-otg.dtbo \
 	rk3399-dwc3-0-peripheral.dtbo \
@@ -72,6 +77,7 @@ dtb-$(CONFIG_CLK_RK3399) += \
 	rk3399-spi1-jedec-nor.dtbo \
 	rk3399-spi1-mcp2515-8mhz.dtbo \
 	rk3399-spi1-spidev.dtbo \
+	rk3399-spi1-waveshare35.dtbo \
 	rk3399-spi2-enc28j60.dtbo \
 	rk3399-spi2-jedec-nor.dtbo \
 	rk3399-spi2-sc16is752.dtbo \
@@ -85,6 +91,7 @@ dtb-$(CONFIG_CLK_RK3399) += \
 	rock-4-raspi-7inch-touchscreen.dtbo \
 	rock-4-rpi-camera-v1_3.dtbo \
 	rock-4-rpi-camera-v2.dtbo \
+	rock-4-radxa-camera-8m.dtbo \
 	rock-4c-plus-raspi-7inch-touchscreen.dtbo
 
 dtb-$(CONFIG_CPU_RK3399) += \
@@ -96,9 +103,17 @@ dtb-$(CONFIG_CPU_RK3399) += \
 
 dtb-$(CONFIG_CLK_RK3568) += \
 	audioinjector-isolated-soundcard.dtbo \
+	radxa-cm3-io-camera-v2-imx219-cam1.dtbo \
+	radxa-cm3-io-camera-v2-imx219-cam2.dtbo \
+	radxa-cm3-io-radxa-camera-8m-cam1.dtbo \
+	radxa-cm3-io-radxa-camera-8m-cam2.dtbo \
 	radxa-cm3-io-dual-cameras-gc2053-gc2093.dtbo \
 	radxa-cm3-io-dual-cameras-gc2053.dtbo \
 	radxa-cm3-io-i2c0-hym8563.dtbo \
+	radxa-cm3-io-okdo-5mp-camera-cam1.dtbo \
+	radxa-cm3-io-okdo-5mp-camera-cam2.dtbo \
+	radxa-cm3-io-rpi-camera-v1p3-ov5647-cam1.dtbo \
+	radxa-cm3-io-rpi-camera-v1p3-ov5647-cam2.dtbo \
 	radxa-cm3-io-pcie2x1.dtbo \
 	radxa-cm3-raspcm4io-pcie2x1.dtbo \
 	radxa-cm3-rpi-cm4-7inch-touchscreen-disp0.dtbo \
@@ -108,9 +123,18 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-io-disable-emc2301.dtbo \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam0.dtbo \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam1.dtbo \
+	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
+	radxa-cm3s-io-csi0-rpi-camera-v1p3.dtbo \
+	radxa-cm3s-io-csi0-rpi-camera-v2.dtbo \
+	radxa-cm3s-io-csi0-radxa-camera-8m.dtbo \
+	radxa-cm3s-io-csi1-okdo-5mp-camera.dtbo \
+	radxa-cm3s-io-csi1-rpi-camera-v1p3.dtbo \
+	radxa-cm3s-io-csi1-rpi-camera-v2.dtbo \
+	radxa-cm3s-io-csi1-radxa-camera-8m.dtbo \
 	rk3568-can0-m0.dtbo \
 	rk3568-can1-m0.dtbo \
 	rk3568-can1-m1.dtbo \
+	rk3568-disable-fiq-debugger.dtbo \
 	rk3568-dwc3-host.dtbo \
 	rk3568-dwc3-otg.dtbo \
 	rk3568-dwc3-peripheral.dtbo \
@@ -126,6 +150,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	rk3568-gmac1-disable.dtbo \
 	rk3568-gmac1-enable.dtbo \
 	rk3568-i2c1.dtbo \
+	rk3568-i2c2-disable.dtbo \
 	rk3568-i2c2-m0-pca9555.dtbo \
 	rk3568-i2c2-m0.dtbo \
 	rk3568-i2c2-m1.dtbo \
@@ -133,6 +158,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	rk3568-i2c4-m0.dtbo \
 	rk3568-npu-disable.dtbo \
 	rk3568-npu-enable.dtbo \
+	rk3568-pwm0-disable.dtbo \
 	rk3568-pwm0-m0.dtbo \
 	rk3568-pwm0-m1.dtbo \
 	rk3568-pwm1-m0.dtbo \
@@ -192,6 +218,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	rock-3ab-okdo-5mp-camera.dtbo \
 	rock-3ab-rpi-camera-v1p3-ov5647.dtbo \
 	rock-3ab-rpi-camera-v2-imx219.dtbo \
+	rock-3ab-radxa-camera-8m.dtbo \
 	rock-3b-enable-hdmicec.dtbo \
 	rock-3b-hdmi-and-sharp-lq133t1jw01-edp-lcd.dtbo \
 	rock-3b-radxa-5inch-touchscreen.dtbo \
@@ -202,7 +229,8 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	rock-3c-radxa-25w-poe.dtbo \
 	rock-3c-raspberrypi-7inch-touchscreen.dtbo \
 	rock-3c-rpi-camera-v1p3.dtbo \
-	rock-3c-rpi-camera-v2.dtbo
+	rock-3c-rpi-camera-v2.dtbo \
+	rock-3c-radxa-camera-8m.dtbo 
 
 dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-cm3-io-sata1.dtbo \
@@ -218,6 +246,20 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-cm3-sodimm-io-radxa-display-8hd.dtbo \
 	radxa-cm3-sodimm-io-radxa-display-10hd.dtbo \
 	radxa-cm3-sodimm-io-raspberrypi-7inch-touchscreen.dtbo \
+	radxa-cm3i-io-edp-sharp-lq133t1jw01-lcd.dtbo \
+	radxa-cm3i-io-okdo-5mp-camera-cam1.dtbo \
+	radxa-cm3i-io-okdo-5mp-camera-cam2.dtbo \
+	radxa-cm3i-io-rpi-camera-v1p3-cam1.dtbo \
+	radxa-cm3i-io-rpi-camera-v1p3-cam2.dtbo \
+	radxa-cm3i-io-quectel-4g-module.dtbo \
+	radxa-cm3i-io-radxa-8inch-display.dtbo \
+	radxa-cm3i-io-radxa-display-10hd.dtbo \
+	radxa-cm3i-io-radxa-display-10fhd.dtbo \
+	radxa-cm3i-io-rpi-camera-v2-cam1.dtbo \
+	radxa-cm3i-io-rpi-camera-v2-cam2.dtbo \
+	radxa-cm3i-io-radxa-camera-8m-cam1.dtbo \
+	radxa-cm3i-io-radxa-camera-8m-cam2.dtbo \
+	radxa-cm3i-io-sata.dtbo \
 	radxa-zero3-external-antenna.dtbo \
 	radxa-zero3-rpi-camera-v1.3.dtbo \
 	radxa-zero3-rpi-camera-v2.dtbo \
@@ -237,8 +279,12 @@ dtb-$(CONFIG_CPU_RK3568) += \
 dtb-$(CONFIG_CLK_RK3588) += \
 	radxa-nx5-io-rpi-camera-v2-cam0.dtbo \
 	radxa-nx5-io-rpi-camera-v2-cam1.dtbo \
+	rk3588-disable-fiq-debugger.dtbo \
 	rk3588-dwc3-host.dtbo \
 	rk3588-dwc3-peripheral.dtbo \
+	rk3588-dwc3-otg.dtbo \
+	rk3588-dwc3_1-host.dtbo \
+	rk3588-dwc3_1-peripheral.dtbo \
 	rk3588-fiq-debugger-uart2m2.dtbo \
 	rk3588-fiq-debugger-uart3m1.dtbo \
 	rk3588-fiq-debugger-uart4m2.dtbo \
@@ -355,16 +401,35 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	radxa-cm5-rpi-cm4-camera-v2-imx219-cam1.dtbo \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp0.dtbo \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp1.dtbo \
+	rock-5-itx-enable-sharp-lq133t1jw01-edp-lcd-disable-dp1.dtbo \
+	rock-5-itx-okdo-5mp-camera-on-cam0.dtbo \
+	rock-5-itx-okdo-5mp-camera-on-cam1.dtbo \
+	rock-5-itx-radxa-camera-4k-on-cam0.dtbo \
+	rock-5-itx-radxa-camera-4k-on-cam1.dtbo \
+	rock-5-itx-radxa-camera-8m-219-on-cam0.dtbo \
+	rock-5-itx-radxa-camera-8m-219-on-cam1.dtbo \
+	rock-5-itx-radxa-display-8hd-on-lcd0.dtbo \
+	rock-5-itx-radxa-display-8hd-on-lcd1.dtbo \
+	rock-5-itx-radxa-display-10fhd-on-lcd0.dtbo \
+	rock-5-itx-radxa-display-10fhd-on-lcd1.dtbo \
+	rock-5-itx-radxa-display-10hd-on-lcd0.dtbo \
+	rock-5-itx-radxa-display-10hd-on-lcd1.dtbo \
+	rock-5a-okdo-5mp-camera.dtbo \
 	rock-5a-radxa-camera-4k.dtbo \
 	rock-5a-radxa-display-10fhd.dtbo \
 	rock-5a-raspi-7inch-touchscreen.dtbo \
+	rock-5a-rpi-camera-v1_3.dtbo \
+	rock-5b-okdo-5mp-camera.dtbo \
 	rock-5b-radxa-camera-4k.dtbo \
 	rock-5b-radxa-display-10fhd.dtbo \
 	rock-5b-raspi-7inch-touchscreen.dtbo \
+	rock-5b-rpi-camera-v1_3.dtbo \
 	rock-5b-hdmi1-8k.dtbo \
 	rock-5b-hdmi2-8k.dtbo \
 	rock-5b-plus-cam0-radxa-camera-4k.dtbo \
-	rock-5b-plus-cam1-radxa-camera-4k.dtbo
+	rock-5b-plus-cam1-radxa-camera-4k.dtbo \
+	rock-5b-plus-cam0-rpi-camera-v2.dtbo \
+	rock-5b-plus-cam1-rpi-camera-v2.dtbo
 
 dtbotxt-$(CONFIG_ARCH_ROCKCHIP) += \
 	README.overlays
