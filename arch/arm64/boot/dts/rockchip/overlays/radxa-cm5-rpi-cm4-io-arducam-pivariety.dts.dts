@@ -1,17 +1,17 @@
 /dts-v1/;
 /plugin/;
 
-#include <dt-bindings/power/rk3588-power.h>
+										   
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/rockchip.h>
 
 / {
 	metadata {
-		title ="Enable Arducam Camera Pivariety";
+		title ="Enable Arducam Camera Pivariety on CAM0";
 		compatible = "radxa,cm5-rpi-cm4-io";
 		category = "camera";
 		exclusive = "csi2_dphy0";
-		description = "Enable Arducam Camera Pivariety on CAM0.";
+		description = "Enable Arducam Camera Pivariety on CAM0";
 	};
 
 
@@ -44,16 +44,18 @@
 
 		__overlay__ {
 			status = "okay";
-            pinctrl-0 = <&i2c8m2_xfer>;
+			pinctrl-0 = <&i2c8m2_xfer>;
 			#address-cells = <1>;
 			#size-cells = <0>;
-
+			
 			arducam_pivariety: arducam-pivariety@c {
 				compatible = "arducam,arducam-pivariety";
 				reg = <0x0c>;
 
 				clocks = <&clk_cam_24m>;
 				clock-names = "xclk";
+
+												   
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
 				rockchip,camera-module-name = "arducam-pivariety";
@@ -63,6 +65,7 @@
 					pivariety_out0: endpoint {
 						remote-endpoint = <&mipidphy0_in_ucam2>;
 						data-lanes = <1 2>;
+											   
 					};
 				};
 			};
