@@ -123,6 +123,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-io-disable-emc2301.dtbo \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam0.dtbo \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam1.dtbo \
+	radxa-cm3-rpi-cm4-veye-m2m.dtbo \
 	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v1p3.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v2.dtbo \
