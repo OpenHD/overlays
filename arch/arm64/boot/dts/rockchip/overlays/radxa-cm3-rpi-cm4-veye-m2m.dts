@@ -41,12 +41,12 @@
 				status = "okay";
 				compatible = "veye,veyecam2m";
 				reg = <0x3b>;
-        		clocks = <&clk_cam_24m>;
+				clocks = <&clk_cam_24m>;
 		 		clock-names = "xvclk";
 				pwdn-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
 				power-domains = <&power RK3568_PD_VI>;
 				pinctrl-names = "default";
-        		pinctrl-0 = <&cif_clk>;
+				pinctrl-0 = <&cif_clk>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
 				rockchip,camera-module-name = "beye";
