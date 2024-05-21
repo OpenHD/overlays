@@ -1,24 +1,32 @@
 /*
- * This file is licensed under the terms of GPLv3.
- * Made by OpenHD
+ * Copyright (C) 2024 Raphael from OpenHD
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
  */
 
 /dts-v1/;
 /plugin/;
 
-#include <dt-bindings/power/rk3568-power.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/rockchip.h>
 
 / {
 	metadata {
-		title = "Enable Veye Cam 2 MegaPixel on Zero3W";
+		title = "Enable Veye Camera on Zero3W/E";
 		compatible = "radxa,zero3";
 		category = "camera";
 		exclusive = "csi2_dphy0";
-		description = "Enable Veye Cam 2 MegaPixel on CAM0.";
+		description = "Enable Veye Camera on Zero3";
 	};
-
 
 	fragment@0 {
 		target-path = "/";
@@ -27,18 +35,15 @@
 			clk_cam_24m: external-camera-clock-24m {
 				status = "okay";
 				compatible = "fixed-clock";
-				clock-frequency = <4000000>;
+				clock-frequency = <24000000>;
 				clock-output-names = "clk_cam_24m";
 				#clock-cells = <0>;
 			};
-
-
 		};
 	};
 
 	fragment@1 {
 		target = <&i2c2>;
-
 
 		__overlay__ {
 			status = "okay";
@@ -52,18 +57,19 @@
 				compatible = "veye,veyecam2m";
 				reg = <0x3b>;
 				clocks = <&clk_cam_24m>;
-				clock-names = "xvclk";
-				pwdn-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_LOW>;
+		 		clock-names = "xvclk";
+				pwdn-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_HIGH>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&cif_clk>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
-				rockchip,camera-module-name = "veyecam2m";
+				rockchip,camera-module-name = "veye";
 				rockchip,camera-module-lens-name = "default";
 
 				port {
 					veyecam2m_out: endpoint {
-						remote-endpoint = <&mipi_in_ucam0>;
+						remote-endpoint = <&mipi_in_ucam3>;
 						data-lanes = <1 2>;
-						link-frequencies = /bits/ 64 <297000000>;
 					};
 				};
 			};
@@ -93,8 +99,8 @@
 					#address-cells = <1>;
 					#size-cells = <0>;
 
-					mipi_in_ucam0: endpoint@1 {
-						reg = <1>;
+					mipi_in_ucam3: endpoint@4 {
+						reg = <4>;
 						remote-endpoint = <&veyecam2m_out>;
 						data-lanes = <1 2>;
 					};
@@ -105,8 +111,8 @@
 					#address-cells = <1>;
 					#size-cells = <0>;
 
-					dphy0_out: endpoint@1 {
-						reg = <1>;
+					csi2dphy0_out: endpoint@0 {
+						reg = <0>;
 						remote-endpoint = <&isp0_in>;
 					};
 				};
@@ -126,7 +132,7 @@
 
 				isp0_in: endpoint@0 {
 					reg = <0>;
-					remote-endpoint = <&dphy0_out>;
+					remote-endpoint = <&csi2dphy0_out>;
 				};
 			};
 		};
@@ -136,7 +142,7 @@
 		target = <&rkisp>;
 
 		__overlay__ {
-			status = "okey";
+			status = "okay";
 		};
 	};
 
@@ -163,4 +169,5 @@
 			status = "okay";
 		};
 	};
+
 };
