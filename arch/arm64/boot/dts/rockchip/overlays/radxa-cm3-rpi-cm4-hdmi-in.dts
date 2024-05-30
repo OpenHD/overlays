@@ -1,14 +1,29 @@
+/*
+ * Copyright (C) 2024 Raphael from OpenHD
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ */
+
 /dts-v1/;
 /plugin/;
 
 
 / {
 	metadata {
-		title = "Enable Hdmi In on Zero3W/E";
-		compatible = "radxa,zero3";
+		title = "Enable Hdmi In on CM3";
+		compatible = "radxa,cm3-rpi-cm4-io";
 		category = "camera";
-		exclusive = "csi2_dphy0";
-		description = "Enable Hdmi In on Zero3";
+		exclusive = "csi2_dphy2";
+		description = "Enable Hdmi In on CM3";
 	};
 
 	fragment@0 {
@@ -30,7 +45,9 @@
 				regulator-always-on;
 				regulator-boot-on;
 				enable-active-high;
-				gpio = <&gpio3 22 0>;
+				pwdn-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&cam_pwdn_gpio>;
 			};
 		};
 	};
@@ -78,7 +95,7 @@
 	};
 
 	fragment@3 {
-		target = <&csi2_dphy0>;
+		target = <&csi2_dphy2>;
 
 		__overlay__ {
 			status = "okay";
