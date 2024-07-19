@@ -12,20 +12,18 @@
  * GNU General Public License for more details.
  *
  */
-
+ 
 /dts-v1/;
 /plugin/;
 
-#include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/pinctrl/rockchip.h>
 
 / {
 	metadata {
-		title = "Enable Hdmi In on CM3 on CAM1";
+		title = "Enable Hdmi In on CM3 on CAM0";
 		compatible = "radxa,cm3-rpi-cm4-io";
 		category = "camera";
-		exclusive = "csi2_dphy1";
-		description = "Enable Hdmi In on CM3 on CAM1";
+		exclusive = "csi2_dphy2";
+		description = "Enable Hdmi In on CM3 on CAM0";
 	};
 
 	fragment@0 {
@@ -47,20 +45,18 @@
 				regulator-always-on;
 				regulator-boot-on;
 				enable-active-high;
-				pwdn-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-				pinctrl-names = "default";
-				pinctrl-0 = <&cam_pwdn_gpio>;
+				gpio = <&gpio3 22 0>;
 			};
 		};
 	};
 
 	fragment@1 {
-		target = <&i2c0>;
+		target = <&i2c2>;
 
 		__overlay__ {
 			status = "okay";
 			pinctrl-names = "default";
-			pinctrl-0 = <&i2c0_xfer>;
+			pinctrl-0 = <&i2c2m1_xfer>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 
@@ -97,7 +93,7 @@
 	};
 
 	fragment@3 {
-		target = <&csi2_dphy1>;
+		target = <&csi2_dphy2>;
 
 		__overlay__ {
 			status = "okay";
