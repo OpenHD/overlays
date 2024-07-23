@@ -3,14 +3,14 @@
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/rockchip.h>
+#include <dt-bindings/power/rk3588-power.h>
 
 / {
 	metadata {
-		title ="Enable Arducam Camera Pivariety on ROCK 5A";
+		title ="Enable Arducam Pivariety on ROCK 5A";
 		compatible = "radxa,rock-5a", "rockchip,rk3588";
 		category = "camera";
-		exclusive = "csi2_dphy0";
-		description = "Enable Arducam Camera Pivariety on ROCK 5A";
+		description = "Enable Arducam Pivariety on ROCK 5A.";
 	};
 
 
@@ -43,24 +43,27 @@
 
 		__overlay__ {
 			status = "okay";
+			clock-frequency = <10000>;
+
 			#address-cells = <1>;
 			#size-cells = <0>;
-			
+
 			arducam_pivariety: arducam-pivariety@c {
 				compatible = "arducam,arducam-pivariety";
 				reg = <0x0c>;
 
 				clocks = <&clk_cam_24m>;
 				clock-names = "xclk";
-
+				power-domains = <&power RK3588_PD_VI>;
+				reset-gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
 				rockchip,camera-module-index = <0>;
 				rockchip,camera-module-facing = "back";
-				rockchip,camera-module-name = "arducam-pivariety";
+				rockchip,camera-module-name = "IQ";
 				rockchip,camera-module-lens-name = "default";
 
 				port {
 					pivariety_out0: endpoint {
-						remote-endpoint = <&mipidphy0_in_ucam2>;
+						remote-endpoint = <&mipidphy0_in_ucam0>;
 						data-lanes = <1 2>;
 					};
 				};
@@ -77,7 +80,7 @@
 	};
 
 	fragment@3 {
-		target = <&csi2_dphy0>;
+		target = <&csi2_dphy1>;
 
 		__overlay__ {
 			status = "okay";
@@ -91,8 +94,8 @@
 					#address-cells = <1>;
 					#size-cells = <0>;
 
-					mipidphy0_in_ucam2: endpoint@3 {
-						reg = <3>;
+					mipidphy0_in_ucam0: endpoint@1 {
+						reg = <1>;
 						remote-endpoint = <&pivariety_out0>;
 						data-lanes = <1 2>;
 					};

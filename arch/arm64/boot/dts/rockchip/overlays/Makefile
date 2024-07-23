@@ -124,6 +124,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam0.dtbo \
 	radxa-cm3-rpi-cm4-arducam-imx708-cam1.dtbo \
 	radxa-cm3-rpi-cm4-veye-m2m.dtbo \
+	radxa-cm3-rpi-cm4-rpi-cam-v1.dtbo \
 	radxa-cm3-rpi-cm4-hdmi-in.dtbo \
 	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v1p3.dtbo \
@@ -405,6 +406,8 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp0.dtbo \
 	radxa-cm5-rpi-cm4-io-raspi-7inch-ts-disp1.dtbo \
 	radxa-cm5-rpi-cm4-io-arducam-imx708.dtbo \
+	radxa-cm5-rpi-cm4-io-arducam-imx708_HDR.dtbo \
+	radxa-cm5-rpi-cm4-io-arducam-pivariety.dtbo \
 	rock-5-itx-enable-sharp-lq133t1jw01-edp-lcd-disable-dp1.dtbo \
 	rock-5-itx-okdo-5mp-camera-on-cam0.dtbo \
 	rock-5-itx-okdo-5mp-camera-on-cam1.dtbo \
@@ -423,11 +426,17 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	rock-5a-radxa-display-10fhd.dtbo \
 	rock-5a-raspi-7inch-touchscreen.dtbo \
 	rock-5a-rpi-camera-v1_3.dtbo \
+	rock-5a-arducam-imx708.dtbo \
+	rock-5a-arducam-imx708-hdr.dtbo \
+	rock-5a-arducam-pivariety.dtbo \
 	rock-5b-okdo-5mp-camera.dtbo \
 	rock-5b-radxa-camera-4k.dtbo \
 	rock-5b-radxa-display-10fhd.dtbo \
 	rock-5b-raspi-7inch-touchscreen.dtbo \
 	rock-5b-rpi-camera-v1_3.dtbo \
+	rock-5b-arducam-imx708-hdr.dtbo \
+	rock-5b-arducam-imx708.dtbo \
+	rock-5b-arducam-pivariety.dtbo \
 	rock-5b-hdmi1-8k.dtbo \
 	rock-5b-hdmi2-8k.dtbo \
 	rock-5b-plus-cam0-radxa-camera-4k.dtbo \
