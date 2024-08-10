@@ -40,6 +40,7 @@ dtb-$(CONFIG_CLK_RK3308) += \
 	rk3308-spi2-spidev.dtbo \
 	rk3308-uart0.dtbo \
 	rk3308-uart1.dtbo \
+	rk3308-uart2.dtbo \
 	rk3308-uart2-m0.dtbo \
 	rk3308-uart3.dtbo \
 	rk3308-uart3-m1.dtbo \
@@ -49,7 +50,8 @@ dtb-$(CONFIG_CLK_RK3328) += \
 	rk3328-pwm2.dtbo \
 	rk3328-uart1.dtbo \
 	rk3328-uart2-m1.dtbo \
-	rk3328-spi0-spidev.dtbo
+	rk3328-spi0-spidev.dtbo \
+	rk3328-uart2-m0.dtbo
 
 dtb-$(CONFIG_CLK_RK3399) += \
 	rk3399-disable-fiq-debugger.dtbo \
@@ -126,6 +128,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-veye-m2m.dtbo \
 	radxa-cm3-rpi-cm4-rpi-cam-v1.dtbo \
 	radxa-cm3-rpi-cm4-hdmi-in.dtbo \
+	radxa-cm3-rpi-cm4-pivariety.dtbo \
 	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v1p3.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v2.dtbo \
@@ -272,6 +275,7 @@ dtb-$(CONFIG_CPU_RK3568) += \
 	radxa-zero3-openhd-keyboard.dtbo \
 	radxa-zero3-disabled-ethernet.dtbo \
 	radxa-zero3-disabled-wireless.dtbo \
+	radxa-zero3-arducam-pivariety.dtbo \
 	rock-3a-radxa-display-8hd.dtbo \
 	rock-3a-radxa-display-10hd.dtbo \
 	rock-3b-radxa-8inch-display.dtbo \
