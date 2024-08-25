@@ -54,7 +54,7 @@
 
 			arducam_pivariety: arducam-pivariety@c {
 				compatible = "arducam,arducam-pivariety";
-				reg = <0x04>;
+				reg = <0x0c>;
 				clocks = <&clk_cam_24m>;
 				clock-names = "xclk";
 				rockchip,camera-module-index = <0>;
