@@ -430,6 +430,10 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	rock-5a-radxa-display-10fhd.dtbo \
 	rock-5a-raspi-7inch-touchscreen.dtbo \
 	rock-5a-rpi-camera-v1_3.dtbo \
+	rock-5a-arducam-imx219.dtbo \
+	rock-5a-arducam-imx477p.dtbo \
+	rock-5a-arducam-imx519.dtbo \
+	rock-5a-arducam-ov64a40.dtbo \
 	rock-5a-arducam-imx708.dtbo \
 	rock-5a-arducam-imx708-hdr.dtbo \
 	rock-5a-arducam-pivariety.dtbo \
@@ -438,6 +442,7 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	rock-5b-radxa-display-10fhd.dtbo \
 	rock-5b-raspi-7inch-touchscreen.dtbo \
 	rock-5b-rpi-camera-v1_3.dtbo \
+	rock-5b-arducam-imx519.dtbo \
 	rock-5b-arducam-imx708-hdr.dtbo \
 	rock-5b-arducam-imx708.dtbo \
 	rock-5b-arducam-pivariety.dtbo \
