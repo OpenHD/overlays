@@ -437,6 +437,7 @@ dtb-$(CONFIG_CPU_RK3588) += \
 	rock-5a-arducam-imx708.dtbo \
 	rock-5a-arducam-imx708-hdr.dtbo \
 	rock-5a-arducam-pivariety.dtbo \
+	rock-5a-arducam-pivariety-477-1080.dtbo \
 	rock-5b-okdo-5mp-camera.dtbo \
 	rock-5b-radxa-camera-4k.dtbo \
 	rock-5b-radxa-display-10fhd.dtbo \
