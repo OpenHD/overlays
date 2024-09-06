@@ -18,19 +18,6 @@
 
 &{/} {
 
-
-	vcc_camera: vcc-camera {
-		status = "okay";
-		compatible = "regulator-fixed";
-		regulator-name = "vcc_camera";
-		gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		regulator-always-on;
-		regulator-boot-on;
-	};
-
 	camera_pwdn_gpio: camera-pwdn-gpio {
 		status = "okay";
 		compatible = "regulator-fixed";
