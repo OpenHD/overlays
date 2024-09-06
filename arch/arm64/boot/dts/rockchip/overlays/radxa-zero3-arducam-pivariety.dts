@@ -8,161 +8,136 @@
 
 / {
 	metadata {
-		title = "Enable Arducam Pivariety on Radxa Zero3";
+		title = "Enable Arducam Pivariety";
 		compatible = "radxa,zero3";
 		category = "camera";
 		exclusive = "csi2_dphy0";
-		description = "Enable Arducam Pivariety on Radxa Zero3";
+		description = "Enable Arducam Pivariety";
+	};
+};
+
+&{/} {
+
+
+	vcc_camera: vcc-camera {
+		status = "okay";
+		compatible = "regulator-fixed";
+		regulator-name = "vcc_camera";
+		gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+		regulator-boot-on;
 	};
 
-	fragment@0 {
-		target-path = "/";
+	camera_pwdn_gpio: camera-pwdn-gpio {
+		status = "okay";
+		compatible = "regulator-fixed";
+		regulator-name = "camera_pwdn_gpio";
+		regulator-always-on;
+		regulator-boot-on;
+		enable-active-high;
+		gpio = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
+	};
+		ext_cam_clk_arducam: ext-cam-clk-arducam {
+		status = "okay";
+		compatible = "fixed-clock";
+		clock-frequency = <24000000>;
+		clock-output-names = "ext_cam_clk_arducam";
+		#clock-cells = <0>;
+	};
+};
 
-		__overlay__ {
-			clk_cam_24m: external-camera-clock-24m {
-				status = "okay";
-				compatible = "fixed-clock";
-				clock-frequency = <24000000>;
-				clock-output-names = "clk_cam_24m";
-				#clock-cells = <0>;
-			};
+&i2c2 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c2m1_xfer>;
+	#address-cells = <1>;
+	#size-cells = <0>;
 
-			camera_pwdn_gpio: camera-pwdn-gpio {
-				status = "okay";
-				compatible = "regulator-fixed";
-				regulator-name = "camera_pwdn_gpio";
-				regulator-always-on;
-				regulator-boot-on;
-				enable-active-high;
-				gpio = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
+	camera_arducam: camera-arducam@0c {
+		status = "okay";
+		compatible = "arducam,arducam-pivariety";
+		reg = <0x0c>;
+		clocks = <&ext_cam_clk_arducam>;
+		clock-names = "xclk";
+		rockchip,camera-module-index = <0>;
+		rockchip,camera-module-facing = "front";
+		rockchip,camera-module-name = "arducam-camera";
+		rockchip,camera-module-lens-name = "default";
+
+		port {
+			arducam_out: endpoint {
+				remote-endpoint = <&mipi_in_ucam0>;
+				data-lanes = <1 2>;
 			};
 		};
 	};
+};
 
-	fragment@1 {
-		target = <&i2c2>;
-		clock-frequency = <10000>;
+&csi2_dphy_hw {
+	status = "okay";
+};
+
+&csi2_dphy0 {
+	status = "okay";
+
+	ports {
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		__overlay__ {
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&i2c2m1_xfer>;
+		port@0 {
+			reg = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			arducam_pivariety: arducam-pivariety@c {
-				compatible = "arducam,arducam-pivariety";
-				reg = <0x0c>;
-				clocks = <&clk_cam_24m>;
-				clock-names = "xclk";
-				rockchip,camera-module-index = <0>;
-				rockchip,camera-module-facing = "back";
-				rockchip,camera-module-name = "IQ";
-				rockchip,camera-module-lens-name = "default";
+			mipi_in_ucam0: endpoint@1 {
+				reg = <1>;
+				remote-endpoint = <&arducam_out>;
+				data-lanes = <1 2>;
+			};
+		};
 
-				port {
-					pivariety_out0: endpoint {
-						remote-endpoint = <&mipi_in_ucam0>;
-						data-lanes = <1 2>;
-					};
-				};
+		port@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			dphy0_out: endpoint@1 {
+				reg = <1>;
+				remote-endpoint = <&isp0_in>;
 			};
 		};
 	};
+};
 
-	fragment@2 {
-		target = <&csi2_dphy_hw>;
+&rkisp_vir0 {
+	status = "okay";
 
-		__overlay__ {
-			status = "okay";
+	port {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		isp0_in: endpoint@0 {
+			reg = <0>;
+			remote-endpoint = <&dphy0_out>;
 		};
 	};
+};
 
-	fragment@3 {
-		target = <&csi2_dphy0>;
+&rkisp {
+	status = "okay";
+};
 
-		__overlay__ {
-			status = "okay";
+&rkisp_mmu {
+	status = "okay";
+};
 
-			ports {
-				#address-cells = <1>;
-				#size-cells = <0>;
+&rkcif_mmu {
+	status = "okay";
+};
 
-				port@0 {
-					reg = <0>;
-					#address-cells = <1>;
-					#size-cells = <0>;
-
-					mipi_in_ucam0: endpoint@1 {
-						reg = <1>;
-						remote-endpoint = <&pivariety_out0>;
-						data-lanes = <1 2>;
-					};
-				};
-
-				port@1 {
-					reg = <1>;
-					#address-cells = <1>;
-					#size-cells = <0>;
-
-					dphy0_out: endpoint@1 {
-						reg = <1>;
-						remote-endpoint = <&isp0_in>;
-					};
-				};
-			};
-		};
-	};
-
-	fragment@4 {
-		target = <&rkisp_vir0>;
-
-		__overlay__ {
-			status = "okay";
-
-			port {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				isp0_in: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&dphy0_out>;
-				};
-			};
-		};
-	};
-
-	fragment@5 {
-		target = <&rkisp>;
-
-		__overlay__ {
-			status = "okay";
-		};
-	};
-
-	fragment@6 {
-		target = <&rkisp_mmu>;
-
-		__overlay__ {
-			status = "okay";
-		};
-	};
-
-	fragment@7 {
-		target = <&rkcif_mmu>;
-
-		__overlay__ {
-			status = "okay";
-		};
-	};
-
-	fragment@8 {
-		target = <&rkcif>;
-
-		__overlay__ {
-			status = "okay";
-		};
-	};
+&rkcif {
+	status = "okay";
 };
