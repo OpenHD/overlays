@@ -1,0 +1,196 @@
+/*
+ * Copyright (C) 2024 Raphael from OpenHD
+ *
+ * This is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+#include <dt-bindings/power/rk3568-power.h>
+
+
+/ {
+	metadata {
+		title = "Enable Arducam Pivariety on Radxa CM3 Cam1";
+		compatible = "radxa,cm3-rpi-cm4-io";
+		category = "camera";
+		exclusive = "csi2_dphy1";
+		description = "Enable Arducam Pivariety on Radxa CM3 Cam1";
+	};
+
+	fragment@0 {
+		target-path = "/";
+
+		__overlay__ {
+			clk_cam_24m: external-camera-clock-24m {
+				status = "okay";
+				compatible = "fixed-clock";
+				clock-frequency = <24000000>;
+				clock-output-names = "clk_cam_24m";
+				#clock-cells = <0>;
+			};
+
+			camera_pwdn_gpio: camera-pwdn-gpio {
+				status = "okay";
+				compatible = "regulator-fixed";
+				regulator-name = "camera_pwdn_gpio";
+				regulator-always-on;
+				regulator-boot-on;
+				enable-active-high;
+				pwdn-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&cam_pwdn_gpio>;
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&i2c0>;
+		clock-frequency = <10000>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c0m1_xfer>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			arducam_pivariety: arducam-pivariety@c {
+				compatible = "arducam,arducam-pivariety";
+				reg = <0x0c>;
+				clocks = <&clk_cam_24m>;
+				clock-names = "xclk";
+				rockchip,camera-module-index = <0>;
+				rockchip,camera-module-facing = "back";
+				rockchip,camera-module-name = "IMX462";
+				rockchip,camera-module-lens-name = "default";
+
+				port {
+					pivariety_out0: endpoint {
+						remote-endpoint = <&csi2dphy1_uCAM0>;
+						data-lanes = <1 2>;
+					};
+				};
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&csi2_dphy_hw>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&csi2_dphy1>;
+
+		__overlay__ {
+			status = "okay";
+
+			ports {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				port@0 {
+					reg = <0>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					mipi_in_ucam0: endpoint@1 {
+						reg = <1>;
+						remote-endpoint = <&pivariety_out0>;
+						data-lanes = <1 2>;
+					};
+				};
+
+				port@1 {
+					reg = <1>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					csi2dphy1_out: endpoint@1 {
+						reg = <1>;
+						remote-endpoint = <&isp0_in>;
+					};
+				};
+			};
+		};
+	};
+
+	fragment@4 {
+		target = <&rkisp_vir0>;
+
+		__overlay__ {
+			status = "okay";
+
+			port {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				isp0_in: endpoint@0 {
+					reg = <0>;
+					remote-endpoint = <&csi2dphy1_out>;
+				};
+			};
+		};
+	};
+
+	fragment@5 {
+		target = <&rkisp>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@6 {
+		target = <&rkisp_mmu>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@7 {
+		target = <&rkcif_mmu>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@8 {
+		target = <&rkcif>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+	fragment@9 {
+		target = <&pinctrl>;
+
+		__overlay__ {
+			camera {
+				cam_pwdn_gpio: cam-pwdn-gpio {
+					rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
+				};
+			};
+		};
+	};
+};

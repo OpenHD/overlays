@@ -129,6 +129,7 @@ dtb-$(CONFIG_CLK_RK3568) += \
 	radxa-cm3-rpi-cm4-rpi-cam-v1.dtbo \
 	radxa-cm3-rpi-cm4-hdmi-in.dtbo \
 	radxa-cm3-rpi-cm4-pivariety.dtbo \
+	radxa-cm3-rpi-cm4-pivariety-cam1.dtbo \
 	radxa-cm3s-io-csi0-okdo-5mp-camera.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v1p3.dtbo \
 	radxa-cm3s-io-csi0-rpi-camera-v2.dtbo \
